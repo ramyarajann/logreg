@@ -1,6 +1,7 @@
 import React from 'react';
-import { Container, Grid, Typography, } from '@material-ui/core';
+import { Container, Grid, Typography, TextField } from '@material-ui/core';
 import { InputField, CheckboxField, SelectField } from '../../FormFields';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
 const genders = [
   {
@@ -70,7 +71,7 @@ export default function PersonalDetailss(props) {
     }
   } = props;
   return (
-    <React.Fragment>
+    <div>
       <Typography variant="h6" gutterBottom align="center">
         Add Your Personal Details
        </Typography>
@@ -123,6 +124,7 @@ export default function PersonalDetailss(props) {
             label={state.label}
             data={states}
             fullWidth
+           
           />
         </Grid>
       </Grid>
@@ -135,7 +137,8 @@ export default function PersonalDetailss(props) {
           <InputField name={phoneno.name} label={phoneno.label} fullWidth variant="outlined" size="small" />
         </Grid>
       </Grid>
+      
 
-    </React.Fragment>
+    </div>
   );
 }

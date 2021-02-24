@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
  import Toolbar from '@material-ui/core/Toolbar';
+ import { green } from '@material-ui/core/colors';
 import {
   Stepper,
   Step,
@@ -10,7 +11,7 @@ import {
   CircularProgress
 } from '@material-ui/core';
 import { Formik, Form } from 'formik';
-
+import MaterialLayout from '../../component/Layout/MaterialLayout';
 import PersonalDetailss from './Forms/PersonalDetailss';
 import CompanyDetailss from './Forms/CompanyDetailss';
 import ReviewApplication from './ReviewApplication';
@@ -19,6 +20,7 @@ import CheckoutSuccess from './CheckoutSuccess';
 import validationSchema from './FormModel/validationSchema';
 import checkoutFormModel from './FormModel/checkoutFormModel';
 import formInitialValues from './FormModel/formInitialValues';
+import { createMuiTheme,  MuiThemeProvider } from '@material-ui/core/styles';
 
 import useStyles from './styles';
 
@@ -43,6 +45,24 @@ export default function CheckoutPage() {
   const [activeStep, setActiveStep] = useState(0);
   const currentValidationSchema = validationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
+  const theme = createMuiTheme({
+    typography: {
+      useNextVariants: true,
+    },
+    overrides: {
+      MuiStepIcon: {
+        root: {
+          '&$active': {
+            fill: 'white',
+            '& $text': {
+              fill: '#034691',
+            },
+          },
+        },
+
+      },
+    },
+  });
 
   function _sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -74,15 +94,16 @@ export default function CheckoutPage() {
     
      
       <React.Fragment>
-      <Toolbar>
+      <Toolbar style={{padding: 0}}>
         <Stepper activeStep={activeStep} className={classes.stepper}>
         {steps.map(label => (
           <Step key={label}>
-            <StepLabel>{label}</StepLabel>
+            <StepLabel ><Typography style={{ color: "white" }}>{label}</Typography></StepLabel>
           </Step>
         ))}
       </Stepper>
       </Toolbar>
+      <MaterialLayout>
         {activeStep === steps.length ? (
           <CheckoutSuccess />
         ) : (
@@ -127,6 +148,7 @@ export default function CheckoutPage() {
             )}
           </Formik>
         )}
+        </MaterialLayout>
       </React.Fragment>
       
   );

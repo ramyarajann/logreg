@@ -5,9 +5,7 @@ import CheckoutPage from './component/CheckoutPage';
 function App() {
   return (
     <div>
-      <MaterialLayout>
         <CheckoutPage />
-      </MaterialLayout>
     </div>
   );
 }

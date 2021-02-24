@@ -14,6 +14,7 @@ export default function Header() {
           Squash Apps
         </Typography>
       </Toolbar> */}
+      
     </AppBar>
   );
 }

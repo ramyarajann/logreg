@@ -1,7 +1,12 @@
 import { makeStyles } from '@material-ui/core/styles';
+
 export default makeStyles(theme => ({
+  
   stepper: {
-    padding: theme.spacing(3, 0, 5)
+    padding: theme.spacing(3, 0, 5),
+    width: '100%',
+    background: '#2E4B64',
+    padding: '20px 20%',
   },
   buttons: {
    // display: 'flex',
